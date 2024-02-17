@@ -1,11 +1,12 @@
+import { FilterParamsType } from "@/lib/types/params";
 import { getClient } from "../clientgql";
 import { GET_CHARACTERS, GET_CHARACTERS_BY_ID } from "../queries";
 import { CharacterQuery, CharactersQuery } from "../types/character";
 
-export const getCharacters = async () => {
+export const getCharacters = async (filter: FilterParamsType) => {
   try {
     const { data } = await getClient().query<CharactersQuery>({
-      query: GET_CHARACTERS,
+      query: GET_CHARACTERS(filter),
     });
 
     return data?.characters;
@@ -20,9 +21,9 @@ export const getCharactersById = async (
   try {
     const { data } = await getClient().query<CharacterQuery>({
       query: GET_CHARACTERS_BY_ID(id),
-      // variables: {
-      //   id,
-      // },
+      variables: {
+        id,
+      },
     });
 
     return data;

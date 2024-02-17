@@ -7,5 +7,6 @@ export const { getClient } = registerApolloClient(() => {
     link: new HttpLink({
       uri: process.env.API_URL,
     }),
+    
   });
 });

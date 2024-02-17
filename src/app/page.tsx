@@ -1,13 +1,11 @@
-import { CharacterContentSkeleton, FilterContent } from "@/components";
-import { Suspense } from "react";
+import { FilterContent } from "@/components";
+import { FilterParamsType, SearchParamsType } from "@/lib/types/params";
 
-export default function HomePage() {
+export default function HomePage(props: SearchParamsType<FilterParamsType>) {
+  const { searchParams } = props;
   return (
     <>
-      <Suspense fallback={<CharacterContentSkeleton />}>
-        <FilterContent />
-      </Suspense>
-
+      <FilterContent {...searchParams} />
       <div className="hidden md:block flex-grow ">
         <h1 className="text-5xl h-screen flex items-center justify-center">
           Select a character to see its detail

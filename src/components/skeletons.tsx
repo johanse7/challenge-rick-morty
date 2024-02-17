@@ -3,9 +3,7 @@ const shimmer =
 
 export const CharacterContentSkeleton = () => {
   return (
-    <div className={`${shimmer} relative flex h-full flex-col`}>
-      <div className="w-full rounded-md bg-gray-200 mb-5 h-[38px]" />
-      <div className="w-[50%] rounded-md bg-gray-200 mb-5 h-5 my-4" />
+    <div className={`${shimmer} relative flex h-full flex-col  md:w-[320px]`}>
       <div className="grid grid-cols-1 gap-1">
         <CardSkeleton />
         <CardSkeleton />
@@ -42,7 +40,7 @@ export const CardSkeleton = () => {
 
 export const DetailSkeleton = () => {
   return (
-    <div className={`${shimmer} relative flex h-full flex-col pt-8 px-4`}>
+    <div className={`${shimmer} flex h-full flex-col pt-8 px-4`}>
       <div className="flex flex-col gap-2">
         <div className="h-[75px] w-[75px] rounded-full bg-gray-200" />
         <div className="h-5 w-[60%] rounded-md bg-gray-200" />

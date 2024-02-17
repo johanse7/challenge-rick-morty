@@ -1,1 +1,1 @@
-export const DEBOUCE_DELAY = 300;
+export const TYPE_DELAY = 300 as const;

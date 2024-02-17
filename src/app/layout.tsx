@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={signika.className}>
-        <div className="flex flex-col md:flex-row md:overflow-hidden px-4 py-8  md:overflow-y-auto">
+        <div className="flex flex-col md:flex-row md:overflow-hidden px-4 py-8 md:overflow-y-auto">
           {children}
         </div>
       </body>

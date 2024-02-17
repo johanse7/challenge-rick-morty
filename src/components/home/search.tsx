@@ -1,17 +1,19 @@
 "use client";
 
+import { TYPE_DELAY } from "@/lib/constants";
 import {
   AdjustmentsVerticalIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
 export const Search = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  function handleSearch(name: string) {
+  const handleSearch = useDebouncedCallback((name: string) => {
     const params = new URLSearchParams(searchParams);
     if (name) {
       params.set("name", name);
@@ -19,7 +21,7 @@ export const Search = () => {
       params.delete("name");
     }
     replace(`${pathname}?${params.toString()}`);
-  }
+  }, TYPE_DELAY);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">

@@ -4,13 +4,15 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { HeartFavoriteIcon } from "../icons";
 
 export const CardCharacter = (props: CharacterType) => {
   const { image, name, species, id } = props;
 
   const { id: idParam } = useParams();
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
 
   const favoriteList = useFavoriteCharacters((state) => state.favoriteList);
   const setFavorite = useFavoriteCharacters(
@@ -52,7 +54,10 @@ export const CardCharacter = (props: CharacterType) => {
         }
       )}
     >
-      <Link href={`/detail/${id}`} className="flex-grow-[1]">
+      <Link
+        href={`/detail/${id}?${params.toString()}`}
+        className="flex-grow-[1]"
+      >
         <div className="flex gap-4">
           <Image
             src={image}

@@ -1,12 +1,11 @@
-import { getCharacters } from "@/lib/services";
-import { CharacterContent } from "./character-content";
+import { FilterParamsType } from "@/lib/types/params";
+import { getKeyValues } from "@/lib/utils";
+import { Suspense } from "react";
+import { CharacterContentSkeleton } from "../skeletons";
+import { CharactersResults } from "./characters-results";
 import { Search } from "./search";
 
-export const FilterContent = async () => {
-  const characters = await getCharacters();
-
-  if (!characters?.results?.length) return null;
-
+export const FilterContent = async (props: FilterParamsType) => {
   return (
     <section className="w-full md:w-[350px] flex h-full flex-col md:px-5">
       <header className="flex flex-col gap-4 mb-8">
@@ -16,7 +15,12 @@ export const FilterContent = async () => {
         <Search />
       </header>
       <div className="flex flex-col gap-5">
-        <CharacterContent characters={characters?.results} />
+        <Suspense
+          key={getKeyValues(props)}
+          fallback={<CharacterContentSkeleton />}
+        >
+          <CharactersResults {...props} />
+        </Suspense>
       </div>
     </section>
   );
