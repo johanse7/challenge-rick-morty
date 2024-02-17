@@ -39,3 +39,26 @@ export const CardSkeleton = () => {
     </article>
   );
 };
+
+export const DetailSkeleton = () => {
+  return (
+    <div className={`${shimmer} relative flex h-full flex-col pt-8 px-4`}>
+      <div className="flex flex-col gap-2">
+        <div className="h-[75px] w-[75px] rounded-full bg-gray-200" />
+        <div className="h-5 w-[60%] rounded-md bg-gray-200" />
+      </div>
+      <ul className="divide-y divide-slate-200">
+        <CardDetailSkelton />
+        <CardDetailSkelton />
+        <CardDetailSkelton />
+      </ul>
+    </div>
+  );
+};
+
+export const CardDetailSkelton = () => (
+  <li className={` ${shimmer}  py-3 flex flex-col gap-2 `}>
+    <div className="h-5 w-14 rounded-md bg-gray-200" />
+    <div className="h-5 w-14 rounded-md bg-gray-200 " />
+  </li>
+);

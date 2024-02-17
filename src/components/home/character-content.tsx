@@ -3,7 +3,7 @@
 import { useFavoriteCharacters } from "@/lib/store";
 import { CharacterType } from "@/lib/types/character";
 import { useMemo } from "react";
-import { CharactersList } from "./characters/character-list";
+import { CharactersList } from "./character-list";
 
 type CharacterContentType = {
   characters: Array<CharacterType>;

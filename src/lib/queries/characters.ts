@@ -16,3 +16,17 @@ export const GET_CHARACTERS = gql(`
     }
   }
 `);
+// GetCharactersById($id: String)
+export const GET_CHARACTERS_BY_ID = (id: string) => gql`
+  query  {
+    character(id: ${id}) {
+      id
+      name
+      species
+      image
+      status
+      type
+      gender
+    }
+  }
+`;

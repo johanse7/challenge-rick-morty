@@ -1,4 +1,4 @@
-import { CharacterContentSkeleton } from "@/components/skeletons";
+import { CharacterContentSkeleton } from "@/components/";
 import type { Metadata } from "next";
 import { Signika } from "next/font/google";
 import { Suspense } from "react";
@@ -26,7 +26,7 @@ export default function RootLayout({
               <FilterContent />
             </Suspense>
           </div>
-          <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
+          <div className="flex-grow p-6 md:py-4 md:overflow-y-auto md:px-16">
             {children}
           </div>
         </div>

@@ -1,2 +1,2 @@
-import { GET_CHARACTERS } from "./characters";
-export { GET_CHARACTERS };
+import { GET_CHARACTERS, GET_CHARACTERS_BY_ID } from "./characters";
+export { GET_CHARACTERS, GET_CHARACTERS_BY_ID };
