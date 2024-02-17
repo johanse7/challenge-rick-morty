@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { ImageCharacter } from "@/components";
-=======
 import { ImageCharacter, NotFoundResults } from "@/components";
->>>>>>> c99d54d (add detail page)
 import { getCharactersById } from "@/lib/services";
 
 export const DetailCharacter = async (props: { id: String }) => {
@@ -10,11 +6,7 @@ export const DetailCharacter = async (props: { id: String }) => {
 
   const result = await getCharactersById(id);
 
-<<<<<<< HEAD
-  if (!result?.character) return null;
-=======
   if (!result?.character) return <NotFoundResults />;
->>>>>>> c99d54d (add detail page)
 
   const { gender, image, name, species, status } = result.character;
 
