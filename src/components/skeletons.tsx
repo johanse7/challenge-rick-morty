@@ -3,7 +3,7 @@ const shimmer =
 
 export const CharacterContentSkeleton = () => {
   return (
-    <div className={`${shimmer} relative flex h-full flex-col pt-8 px-4`}>
+    <div className={`${shimmer} relative flex h-full flex-col`}>
       <div className="w-full rounded-md bg-gray-200 mb-5 h-[38px]" />
       <div className="w-[50%] rounded-md bg-gray-200 mb-5 h-5 my-4" />
       <div className="grid grid-cols-1 gap-1">

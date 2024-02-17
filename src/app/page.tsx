@@ -1,6 +1,18 @@
+import { CharacterContentSkeleton, FilterContent } from "@/components";
+import { Suspense } from "react";
+
 export default function HomePage() {
   return (
-    // flex min-h-screen flex-col items-center justify-between p-24
-    <main>home</main>
+    <>
+      <Suspense fallback={<CharacterContentSkeleton />}>
+        <FilterContent />
+      </Suspense>
+
+      <div className="hidden md:block flex-grow ">
+        <h1 className="text-5xl h-screen flex items-center justify-center">
+          Select a character to see its detail
+        </h1>
+      </div>
+    </>
   );
 }

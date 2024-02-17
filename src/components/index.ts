@@ -5,6 +5,10 @@ import { CharactersList } from "./home/character-list";
 import { FilterContent } from "./home/filter-content";
 import { Search } from "./home/search";
 import { HeartFavoriteIcon } from "./icons";
+<<<<<<< HEAD
+=======
+import { NotFoundResults } from "./not-found";
+>>>>>>> c99d54d (add detail page)
 import { CharacterContentSkeleton, DetailSkeleton } from "./skeletons";
 
 export {
@@ -16,5 +20,9 @@ export {
   FilterContent,
   HeartFavoriteIcon,
   ImageCharacter,
+<<<<<<< HEAD
+=======
+  NotFoundResults,
+>>>>>>> c99d54d (add detail page)
   Search,
 };

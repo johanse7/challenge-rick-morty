@@ -8,7 +8,7 @@ export const FilterContent = async () => {
   if (!characters?.results?.length) return null;
 
   return (
-    <section className="flex h-full flex-col pt-8 px-4 md:px-5">
+    <section className="w-full md:w-[350px] flex h-full flex-col md:px-5">
       <header className="flex flex-col gap-4 mb-8">
         <h1 className="text-2xl font-bold md:font-normal">
           Rick and Morty list
