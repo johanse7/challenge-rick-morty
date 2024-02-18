@@ -10,7 +10,7 @@ export const CharactersResults = async (props: FilterParamsType) => {
 
   const { characters } = result ?? {};
 
-  const countFilters = Object.keys(props).length;
+  const countFilters = props ? Object.keys(props)?.length : 0;
 
   return (
     <>

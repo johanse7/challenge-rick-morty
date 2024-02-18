@@ -5,7 +5,7 @@ import { CharacterContentSkeleton } from "../skeletons";
 import { CharactersResults } from "./characters-results";
 import { Search } from "./search";
 
-export const FilterContent = async (props: FilterParamsType) => {
+export const FilterContent = (props: FilterParamsType) => {
   return (
     <section className="w-full md:w-[350px] flex h-full flex-col md:px-5 px-4 py-8 md:overflow-y-auto md:bg-gray-50 md:bg-opacity-50">
       <header className="flex flex-col gap-4 mb-8">

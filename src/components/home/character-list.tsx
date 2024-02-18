@@ -24,19 +24,27 @@ export const CharactersList = (props: CharactersListType) => {
 
   const sortedCharacters = characters.sort(customSort("name", sortType));
 
+  const renderSortButton = () => {
+    if (characters.length <= 1) return null;
+
+    return (
+      <button title="Sort characters" onClick={handleClickSort}>
+        {sortType === "asc" ? (
+          <BarsArrowUpIcon className="h-[24px] w-[24px] text-primary-600" />
+        ) : (
+          <BarsArrowDownIcon className="h-[24px] w-[24px] text-primary-600" />
+        )}
+      </button>
+    );
+  };
+
   return (
     <>
       <div className="flex justify-between">
         <h3 className="text-gray-400 font-bold text-xs md:text-sm">
           {title} ({characters.length})
         </h3>
-        <button title="Sort characters" onClick={handleClickSort}>
-          {sortType === "asc" ? (
-            <BarsArrowUpIcon className="h-[24px] w-[24px] text-primary-600" />
-          ) : (
-            <BarsArrowDownIcon className="h-[24px] w-[24px] text-primary-600" />
-          )}
-        </button>
+        {renderSortButton()}
       </div>
       <ul
         role="list"
