@@ -1,11 +1,11 @@
 import { DetailCharacter, DetailSkeleton, FilterContent } from "@/components";
+import { ArrowleftIcon } from "@/components/icons";
 import {
   DetailParams,
   FilterParamsType,
   SearchParamsType,
 } from "@/lib/types/params";
 
-import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -18,13 +18,13 @@ export default function DetailPage(
 
   return (
     <>
-      <Link href="/">
-        <ArrowLeftIcon className="block md:hidden w-28px] h-[28px] text-primary-600 mb-6 " />
+      <Link href="/" className="block md:hidden pl-4 pt-4">
+        <ArrowleftIcon />
       </Link>
       <div className="hidden md:block">
         <FilterContent {...searchParams} />
       </div>
-      <div className="md:pl-14 w-full">
+      <div className="pl-5 md:pl-14 md:pt-7 w-full">
         <Suspense fallback={<DetailSkeleton />}>
           <DetailCharacter id={params.id} />
         </Suspense>

@@ -1,7 +1,7 @@
 import { ImageCharacter, NotFoundResults } from "@/components";
 import { getCharactersById } from "@/lib/services";
 
-export const DetailCharacter = async (props: { id: String }) => {
+export const DetailCharacter = async (props: { id: string }) => {
   const { id } = props;
 
   const result = await getCharactersById(id);

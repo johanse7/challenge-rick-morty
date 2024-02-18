@@ -3,13 +3,15 @@ import { getClient } from "../clientgql";
 import { GET_CHARACTERS, GET_CHARACTERS_BY_ID } from "../queries";
 import { CharacterQuery, CharactersQuery } from "../types/character";
 
-export const getCharacters = async (filter: FilterParamsType) => {
+export const getCharacters = async (
+  filter: FilterParamsType
+): Promise<CharactersQuery | undefined> => {
   try {
     const { data } = await getClient().query<CharactersQuery>({
       query: GET_CHARACTERS(filter),
     });
 
-    return data?.characters;
+    return { ...data };
   } catch (error) {
     console.error(error);
   }

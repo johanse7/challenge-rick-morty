@@ -1,6 +1,6 @@
 "use client";
 
-import { useFavoriteCharacters } from "@/lib/store";
+import { useGetFavorite } from "@/lib/hooks";
 import { CharacterType } from "@/lib/types/character";
 import { useMemo } from "react";
 import { CharactersList } from "./character-list";
@@ -12,20 +12,16 @@ type CharacterContentType = {
 export const CharacterContent = (props: CharacterContentType) => {
   const { characters = [] } = props;
 
-  const favoriteList = useFavoriteCharacters((state) => state.favoriteList);
+  const { getIsFavorite } = useGetFavorite();
 
   const { charactersAll, favoriteListResult } = useMemo(() => {
-    const favoriteListResult = characters.filter(({ id }) =>
-      favoriteList.includes(id)
-    );
-    const charactersAll = characters.filter(
-      ({ id }) => !favoriteList.includes(id)
-    );
+    const favoriteListResult = characters.filter(({ id }) => getIsFavorite(id));
+    const charactersAll = characters.filter(({ id }) => !getIsFavorite(id));
     return {
       favoriteListResult,
       charactersAll,
     };
-  }, [favoriteList, characters]);
+  }, [getIsFavorite, characters]);
 
   return (
     <>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useFavoriteCharacters } from "@/lib/store";
+import { useGetFavorite } from "@/lib/hooks";
 import Image from "next/image";
 import { HeartFavoriteIcon } from "../icons";
 
@@ -13,8 +13,9 @@ export type ImageCharacterType = {
 export const ImageCharacter = (props: ImageCharacterType) => {
   const { id, image, name } = props;
 
-  const favoriteList = useFavoriteCharacters((state) => state.favoriteList);
-  const isFavorite = favoriteList.includes(id);
+  const { getIsFavorite } = useGetFavorite();
+
+  const isFavorite = getIsFavorite(id);
 
   return (
     <div className="relative w-[75px] h-[75px]">

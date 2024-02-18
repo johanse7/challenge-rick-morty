@@ -20,7 +20,11 @@ const config: Config = {
           700: "#5A3696",
         },
         secondary: {
+          400: "#3B8520",
           600: "#63D838",
+        },
+        tertiary: {
+          300: "#2563EB",
         },
       },
     },

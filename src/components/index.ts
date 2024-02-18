@@ -1,3 +1,4 @@
+import { Button } from "./button";
 import { DetailCharacter } from "./detail/detail-character";
 import { ImageCharacter } from "./detail/image-character";
 import { CardCharacter } from "./home/card-character";
@@ -9,6 +10,7 @@ import { NotFoundResults } from "./not-found";
 import { CharacterContentSkeleton, DetailSkeleton } from "./skeletons";
 
 export {
+  Button,
   CardCharacter,
   CharacterContentSkeleton,
   CharactersList,

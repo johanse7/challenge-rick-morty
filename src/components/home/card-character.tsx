@@ -1,3 +1,4 @@
+import { useGetFavorite } from "@/lib/hooks";
 import { useFavoriteCharacters } from "@/lib/store";
 import { CharacterType } from "@/lib/types/character";
 import { HeartIcon } from "@heroicons/react/24/outline";
@@ -14,12 +15,14 @@ export const CardCharacter = (props: CharacterType) => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
-  const favoriteList = useFavoriteCharacters((state) => state.favoriteList);
+  const { getIsFavorite } = useGetFavorite();
+
   const setFavorite = useFavoriteCharacters(
     (state) => state.setFavoriteCharacter
   );
 
-  const isFavorite = favoriteList.includes(id);
+  const isFavorite = getIsFavorite(id);
+
   const isSelected = idParam === id;
 
   const handleClickSetFavorite = () => {
