@@ -43,7 +43,7 @@ export const Search = () => {
         <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[20px] w-[20px] -translate-y-1/2 text-gray-400 peer-focus:text-gray-900" />
         <button className="absolute right-4 top-[14px]">
           <AdjustmentsVerticalIcon
-            className=" h-[24px] w-[24px] text-primary-600"
+            className="h-[24px] w-[24px] text-primary-600"
             onClick={changeToggle}
           />
         </button>

@@ -25,15 +25,11 @@ export const CharacterContent = (props: CharacterContentType) => {
 
   return (
     <>
-      <h3 className="text-gray-400 font-bold text-xs md:text-sm">
-        Starred Characters ({favoriteListResult.length})
-      </h3>
-      <CharactersList characters={favoriteListResult} />
-
-      <h3 className="text-gray-400 font-bold text-xs md:text-sm">
-        Characters ({charactersAll?.length})
-      </h3>
-      <CharactersList characters={charactersAll} />
+      <CharactersList
+        title=" Starred Characters"
+        characters={favoriteListResult}
+      />
+      <CharactersList title="Characters" characters={charactersAll} />
     </>
   );
 };
