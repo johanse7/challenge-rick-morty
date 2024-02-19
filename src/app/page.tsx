@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { FilterContent } from "@/components";
 import { FilterParamsType, SearchParamsType } from "@/lib/types/params";
 

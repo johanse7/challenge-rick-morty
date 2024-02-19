@@ -1,4 +1,5 @@
 import { Button } from "./button";
+import { BackLink } from "./detail/back-link";
 import { CommentForm } from "./detail/comment-form";
 import { CommentList } from "./detail/commentList";
 import { DetailCharacter } from "./detail/detail-character";
@@ -12,6 +13,7 @@ import { NotFoundResults } from "./not-found-results";
 import { CharacterContentSkeleton, DetailSkeleton } from "./skeletons";
 
 export {
+  BackLink,
   Button,
   CardCharacter,
   CharacterContentSkeleton,

@@ -1,5 +1,5 @@
 export const getKeyValues = (obj: { [key: string]: string } = {}) => {
-  return Object.keys(obj).join("");
+  return Object.values(obj).join("");
 };
 
 export type SortType = "asc" | "desc";

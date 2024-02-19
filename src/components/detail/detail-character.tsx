@@ -16,7 +16,7 @@ export const DetailCharacter = async (props: { id: string }) => {
   const { gender, image, name, species, status } = result.character;
 
   return (
-    <section className="flex flex-col gap-5">
+    <section className="flex flex-col gap-5 pb-2">
       <header className="flex flex-col gap-2">
         <ImageCharacter id={id} image={image} name={name} />
         <h1 className="font-bold text-2xl md:text-3xl">{name}</h1>
