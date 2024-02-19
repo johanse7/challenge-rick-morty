@@ -41,7 +41,7 @@ export const CharactersList = (props: CharactersListType) => {
   return (
     <>
       <div className="flex justify-between">
-        <h3 className="text-gray-400 font-bold text-xs md:text-sm">
+        <h3 className="text-gray-400 font-bold text-sm">
           {title} ({characters.length})
         </h3>
         {renderSortButton()}
