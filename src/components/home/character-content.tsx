@@ -40,7 +40,7 @@ export const CharacterContent = (props: CharacterContentType) => {
     <>
       {!!charactersDeleted?.length && (
         <button
-          className="text-tertiary-300 font-medium underline text-xs md:text-sm self-start"
+          className="text-tertiary-300 font-medium underline text-sm self-start"
           onClick={handleClickUndoDelete}
         >
           Undo delete characters
