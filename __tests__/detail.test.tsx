@@ -34,7 +34,15 @@ jest.mock("next/navigation", () => ({
   },
 }));
 describe("detail page", () => {
-  // const props = { params: { id: "1" } };
+  const props = {
+    params: {},
+    searchParams: {
+      status: "Alive",
+      species: "Alien",
+      gender: "Male",
+      name: "rick",
+    },
+  };
   it("Should Have a character detail", async () => {
     global.fetch = jest.fn(() =>
       Promise.resolve({
@@ -52,8 +60,6 @@ describe("detail page", () => {
       })
     );
 
-    render(await DetailPage());
-
-    // const titleElement = await screen.findByText(/Rick/i);
+    render(await DetailPage(props));
   });
 });

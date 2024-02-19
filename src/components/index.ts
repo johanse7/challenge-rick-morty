@@ -8,7 +8,7 @@ import { CharactersList } from "./home/character-list";
 import { FilterContent } from "./home/filter-content";
 import { Search } from "./home/search";
 import { HeartFavoriteIcon } from "./icons";
-import { NotFoundResults } from "./not-found";
+import { NotFoundResults } from "./not-found-results";
 import { CharacterContentSkeleton, DetailSkeleton } from "./skeletons";
 
 export {

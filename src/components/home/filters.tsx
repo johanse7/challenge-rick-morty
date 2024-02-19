@@ -1,5 +1,6 @@
 import { ArrowleftIcon } from "@/components/icons";
 import { FILTERS } from "@/lib/constants";
+import { FilterParamsType } from "@/lib/types/params";
 import { useClickAway } from "@uidotdev/usehooks";
 import clsx from "clsx";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -16,19 +17,19 @@ export const Filters = ({ onClickClose }: FiltersType) => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const [filters, setFilters] = useState<FiltersType>(
-    Object.fromEntries(params)
+  const [filters, setFilters] = useState<FilterParamsType | Object>(() =>
+    params ? (Object.fromEntries(params) as FilterParamsType) : {}
   );
 
-  const ref = useClickAway(() => {
+  const ref = useClickAway<HTMLDivElement>(() => {
     onClickClose();
   });
 
   const handleChangeFilter = (filterName: string, value: string) => () => {
     setFilters((filter) => {
-      const currentValue = filter[filterName];
+      const currentValue = filter?.[filterName as keyof typeof filter];
       if (currentValue === value) {
-        const { [filterName]: remove, ...rest } = filter;
+        const { [filterName as keyof typeof filter]: remove, ...rest } = filter;
         return {
           ...rest,
         };
@@ -41,7 +42,7 @@ export const Filters = ({ onClickClose }: FiltersType) => {
   };
   const handleClickFilter = () => {
     for (const filterName in FILTERS) {
-      const value = filters[filterName];
+      const value = filters[filterName as keyof typeof filters];
       if (value) params.set(filterName, value);
       else params.delete(filterName);
     }
@@ -53,7 +54,7 @@ export const Filters = ({ onClickClose }: FiltersType) => {
   return (
     <div
       ref={ref}
-      className=" flex flex-col gap- md:border md:top-12 md:border-gray-100 md:rounded-lg fixed left-0 top-0  md:shadow-xl w-full h-lvh z-50 bg-white p-6 md:absolute md:h-auto "
+      className=" flex flex-col gap- md:border md:top-16 md:border-gray-100 md:rounded-lg fixed left-0 top-0  md:shadow-xl w-full h-lvh z-50 bg-white p-6 md:absolute md:h-auto "
     >
       <header className="flex md:hidden">
         <div className="flex-grow-[0.5]">
@@ -78,7 +79,8 @@ export const Filters = ({ onClickClose }: FiltersType) => {
                       "py-[12px] px-[10px] rounded-lg border border-gray-200 min-w-24 md:min-w-20 hover:bg-primary-100 hover:bottom-0",
                       {
                         "bg-primary-100 border-transparent":
-                          filters?.[filterName] === value,
+                          filters?.[filterName as keyof typeof filters] ===
+                          value,
                       }
                     )}
                     onClick={handleChangeFilter(filterName, value)}

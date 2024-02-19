@@ -1,7 +1,7 @@
 import { useGetFavorite } from "@/lib/hooks";
-import { useFavoriteCharacters } from "@/lib/store";
+import { useCharacterDeleted, useFavoriteCharacters } from "@/lib/store";
 import { CharacterType } from "@/lib/types/character";
-import { HeartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon, TrashIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +16,7 @@ export const CardCharacter = (props: CharacterType) => {
   const params = new URLSearchParams(searchParams);
 
   const { getIsFavorite } = useGetFavorite();
+  const deleteCharacter = useCharacterDeleted((state) => state.addCharacter);
 
   const setFavorite = useFavoriteCharacters(
     (state) => state.setFavoriteCharacter
@@ -25,9 +26,9 @@ export const CardCharacter = (props: CharacterType) => {
 
   const isSelected = idParam === id;
 
-  const handleClickSetFavorite = () => {
-    setFavorite(id);
-  };
+  const handleClickSetFavorite = () => setFavorite(id);
+
+  const handleClickDelete = () => deleteCharacter(id);
 
   const getIcon = () => {
     return !isFavorite ? (
@@ -57,21 +58,34 @@ export const CardCharacter = (props: CharacterType) => {
         }
       )}
     >
+      <button
+        className="self-start md:invisible md:group-hover:visible"
+        title="Delete"
+        onClick={handleClickDelete}
+      >
+        <TrashIcon className="h-[15px] w-[15px] text-primary-700 " />
+      </button>
       <Link
         href={`/detail/${id}?${params.toString()}`}
         className="flex-grow-[1]"
       >
-        <div className="flex gap-4">
-          <Image
-            src={image}
-            alt={name}
-            width={50}
-            height={50}
-            className="rounded-full"
-          />
-          <div className="flex flex-col gap-1 justify-center">
-            <span className="text-xs md:text-sm  font-semibold">{name}</span>
-            <span className="text-xs md:text-sm text-gray-500">{species}</span>
+        <div className=" flex flex-col gap-[2px]">
+          <div className="flex gap-4">
+            <Image
+              src={image}
+              alt={name}
+              width={50}
+              height={50}
+              className="rounded-full"
+            />
+            <div className="flex flex-col gap-1 justify-center">
+              <span className="text-base md:text-sm  font-semibold">
+                {name}
+              </span>
+              <span className="text-base md:text-sm text-gray-500">
+                {species}
+              </span>
+            </div>
           </div>
         </div>
       </Link>

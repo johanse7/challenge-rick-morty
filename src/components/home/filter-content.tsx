@@ -12,7 +12,9 @@ export const FilterContent = (props: FilterParamsType) => {
         <h1 className="text-2xl font-bold md:font-normal">
           Rick and Morty list
         </h1>
-        <Search />
+        <Suspense>
+          <Search />
+        </Suspense>
       </header>
       <div className="flex flex-col gap-5">
         <Suspense
