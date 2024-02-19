@@ -1,4 +1,6 @@
 import { Button } from "./button";
+import { CommentForm } from "./detail/comment-form";
+import { CommentList } from "./detail/commentList";
 import { DetailCharacter } from "./detail/detail-character";
 import { ImageCharacter } from "./detail/image-character";
 import { CardCharacter } from "./home/card-character";
@@ -14,6 +16,8 @@ export {
   CardCharacter,
   CharacterContentSkeleton,
   CharactersList,
+  CommentForm,
+  CommentList,
   DetailCharacter,
   DetailSkeleton,
   FilterContent,

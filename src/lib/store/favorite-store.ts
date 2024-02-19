@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 export type FavoriteCharactersType = {
   favoriteList: Array<string>;
 };
+
 export type ActionsType = {
   setFavoriteCharacter: (id: string) => void;
 };
