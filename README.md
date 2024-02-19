@@ -41,8 +41,6 @@ pnpm dev
 bun dev
 ```
 
-```bash
-URL: https://challenge-rick-morty-lac.vercel.app/
-```
+
 
 
