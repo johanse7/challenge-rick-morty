@@ -21,9 +21,9 @@ should add environment variables to root path
 API_URL=*****
 ```
 
-### Instalación 🔧
+### Installation 🔧
 
-Instalar las dependecias por medio del comando:\_
+Install dependecies
 
 ```
 npm install
@@ -40,7 +40,9 @@ pnpm dev
 # or
 bun dev
 ```
-npm run dev
 
+```bash
+URL: https://challenge-rick-morty-lac.vercel.app/
+```
 
 
