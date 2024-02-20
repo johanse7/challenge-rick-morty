@@ -42,5 +42,5 @@ bun dev
 ```
 
 ```bash
-URL https://challenge-rick-morty-5mk9fd0zl-johanrodriguez14.vercel.app/
+URL https://challenge-rick-morty-lac.vercel.app/
 ```
