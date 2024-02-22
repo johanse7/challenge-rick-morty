@@ -1,19 +1,21 @@
-import {
-  CommentForm,
-  CommentList,
-  ImageCharacter,
-  NotFoundResults,
-} from "@/components";
-import { getCharactersById } from "@/lib/services";
+"use client";
 
-export const DetailCharacter = async (props: { id: string }) => {
-  const { id } = props;
+import { CharacterDetailType } from "@/lib/types/character";
+import { CommentForm } from "../detail/comment-form";
+import { CommentList } from "../detail/commentList";
+import { ImageCharacter } from "../detail/image-character";
 
-  const result = await getCharactersById(id);
+import { useCharacterDeleted } from "@/lib/store";
+import { NotFoundResults } from "../not-found-results";
 
-  if (!result?.character) return <NotFoundResults />;
+export const DetailInfo = (props: CharacterDetailType) => {
+  const { gender, image, name, species, status, id } = props;
 
-  const { gender, image, name, species, status } = result.character;
+  const charactersDeleted = useCharacterDeleted(
+    (state) => state.charactersDeleted
+  );
+
+  if (charactersDeleted.includes(id)) return <NotFoundResults />;
 
   return (
     <section className="flex flex-col gap-5 pb-2">

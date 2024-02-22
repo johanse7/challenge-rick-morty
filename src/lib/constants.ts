@@ -1,6 +1,8 @@
+import { FilterType, OptionType } from "./types/character";
+
 export const TYPE_DELAY = 300 as const;
 
-export const FILTERS = {
+export const FILTERS: Partial<Record<FilterType, Array<OptionType>>> = {
   status: [
     { label: "All", value: "" },
     { label: "Alive", value: "Alive" },
@@ -23,3 +25,9 @@ export const FILTERS = {
 
 export const LABEL_FILTER = "Filter" as const;
 export const LABEL_FILTER_PLURAL = "Filters" as const;
+
+export const INITIAL_STATE_FILTERS: Partial<Record<FilterType, string>> = {
+  status: "",
+  species: "",
+  gender: "",
+};

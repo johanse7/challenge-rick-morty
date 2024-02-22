@@ -3,6 +3,7 @@ export type FilterParamsType = {
   status: string;
   gender: string;
   species: string;
+  page: string;
 };
 
 export type SearchParamsType<TSearchParams, TParams = null> = {

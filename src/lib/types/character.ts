@@ -1,7 +1,8 @@
 export type CharactersQuery = {
   characters: {
     info: {
-      count: 826;
+      count: number;
+      pages: number;
     };
     results: Array<CharacterType>;
   };
@@ -21,4 +22,10 @@ export type CharacterType = {
 export type CharacterDetailType = CharacterType & {
   status: string;
   gender: string;
+};
+
+export type FilterType = "status" | "species" | "gender" | "name";
+export type OptionType = {
+  label: string;
+  value: string;
 };

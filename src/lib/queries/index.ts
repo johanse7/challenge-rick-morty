@@ -1,2 +1,6 @@
-import { GET_CHARACTERS, GET_CHARACTERS_BY_ID } from "./characters";
-export { GET_CHARACTERS, GET_CHARACTERS_BY_ID };
+import {
+  GET_CHARACTERS,
+  GET_CHARACTERS_BY_ID,
+  GET_TOTAL_PAGES,
+} from "./characters";
+export { GET_CHARACTERS, GET_CHARACTERS_BY_ID, GET_TOTAL_PAGES };

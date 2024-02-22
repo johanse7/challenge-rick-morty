@@ -2,13 +2,15 @@ import { FilterParamsType } from "@/lib/types/params";
 import { gql } from "@apollo/client";
 
 export const GET_CHARACTERS = (filter: FilterParamsType) => {
-  const { gender = "", name = "", species = "", status = "" } = filter;
+  const { gender = "", name = "", species = "", status = "", page } = filter;
+  const currentPage = Number(page) || 1;
 
   return gql(`
   query   {
-     characters(page: 1, filter: { name: "${name}", status: "${status}", species: "${species}", gender:"${gender}"  }) {
+     characters(page: ${currentPage}, filter: { name: "${name}", status: "${status}", species: "${species}", gender:"${gender}"  }) {
       info {
-        count
+        count,
+        pages
       }
       results {
         id
@@ -34,3 +36,19 @@ export const GET_CHARACTERS_BY_ID = (id: string) => gql`
     }
   }
 `;
+
+export const GET_TOTAL_PAGES = (filter: FilterParamsType) => {
+  const { gender = "", name = "", species = "", status = "", page } = filter;
+  const currentPage = Number(page) || 1;
+
+  return gql(`
+  query   {
+     characters(page: ${currentPage}, filter: { name: "${name}", status: "${status}", species: "${species}", gender:"${gender}"  }) {
+      info {
+        pages
+      }
+      
+    }
+  }
+`);
+};

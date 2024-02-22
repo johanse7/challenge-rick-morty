@@ -1,17 +1,17 @@
 import { LABEL_FILTER, LABEL_FILTER_PLURAL } from "@/lib/constants";
 import { getCharacters } from "@/lib/services";
 import { FilterParamsType } from "@/lib/types/params";
+import { getCountFilterParams } from "@/lib/utils";
 import { CharacterContent } from "./character-content";
 
 export const CharactersResults = async (props: FilterParamsType) => {
-  const { gender, name, species, status } = props;
+  const { gender, name, species, status, page } = props;
 
-  const result = await getCharacters({ gender, name, species, status });
+  const result = await getCharacters({ gender, name, species, status, page });
 
   const { characters } = result ?? {};
 
-  const countFilters = props ? Object.keys(props)?.length : 0;
-
+  const countFilters = getCountFilterParams(props);
   return (
     <>
       {!!countFilters && (
@@ -26,7 +26,6 @@ export const CharactersResults = async (props: FilterParamsType) => {
           </span>
         </div>
       )}
-
       <CharacterContent characters={characters?.results ?? []} />
     </>
   );

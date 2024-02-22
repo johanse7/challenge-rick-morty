@@ -26,9 +26,19 @@ export const CardCharacter = (props: CharacterType) => {
 
   const isSelected = idParam === id;
 
-  const handleClickSetFavorite = () => setFavorite(id);
+  const handleClickSetFavorite = (
+    ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    ev.preventDefault();
+    setFavorite(id);
+  };
 
-  const handleClickDelete = () => deleteCharacter(id);
+  const handleClickDelete = (
+    ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    ev.preventDefault();
+    deleteCharacter(id);
+  };
 
   const getIcon = () => {
     return !isFavorite ? (
@@ -51,25 +61,25 @@ export const CardCharacter = (props: CharacterType) => {
 
   return (
     <li
-      className={clsx(
-        "group py-4 px-2 flex items-center hover:rounded-lg justify-between hover:bg-primary-100",
-        {
-          "bg-primary-100 rounded-lg": isSelected,
-        }
-      )}
+      className={clsx("group hover:rounded-lg hover:bg-primary-100", {
+        "bg-primary-100 rounded-lg": isSelected,
+      })}
     >
-      <button
-        className="self-start md:invisible md:group-hover:visible"
-        title="Delete"
-        onClick={handleClickDelete}
-      >
-        <TrashIcon className="h-[15px] w-[15px] text-primary-700 " />
-      </button>
       <Link
         href={`/detail/${id}?${params.toString()}`}
-        className="flex-grow-[1]"
+        className="flex justify-between py-3 px-2"
+        scroll={false}
+        
+        
       >
-        <div className=" flex flex-col gap-[2px]">
+        <div className=" flex items-start flex-col gap-[2px]">
+          <button
+            className="self-start md:invisible md:group-hover:visible"
+            title="Delete"
+            onClick={handleClickDelete}
+          >
+            <TrashIcon className="h-[15px] w-[15px] text-primary-700 " />
+          </button>
           <div className="flex gap-4">
             <Image
               src={image}
@@ -88,8 +98,8 @@ export const CardCharacter = (props: CharacterType) => {
             </div>
           </div>
         </div>
+        <button onClick={handleClickSetFavorite}>{getIcon()}</button>
       </Link>
-      <button onClick={handleClickSetFavorite}>{getIcon()}</button>
     </li>
   );
 };

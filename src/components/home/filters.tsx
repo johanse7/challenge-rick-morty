@@ -1,5 +1,5 @@
 import { ArrowleftIcon } from "@/components/icons";
-import { FILTERS } from "@/lib/constants";
+import { FILTERS, INITIAL_STATE_FILTERS } from "@/lib/constants";
 import { FilterParamsType } from "@/lib/types/params";
 import { useClickAway } from "@uidotdev/usehooks";
 import clsx from "clsx";
@@ -19,7 +19,9 @@ export const Filters = ({ onClickClose }: FiltersType) => {
   const { replace } = useRouter();
 
   const [filters, setFilters] = useState<FilterParamsType | Object>(() =>
-    params ? (Object.fromEntries(params) as FilterParamsType) : {}
+    params?.size
+      ? (Object.fromEntries(params) as FilterParamsType)
+      : INITIAL_STATE_FILTERS
   );
 
   const ref = useClickAway<HTMLDivElement>(() => {
@@ -42,6 +44,8 @@ export const Filters = ({ onClickClose }: FiltersType) => {
     });
   };
   const handleClickFilter = () => {
+    params.set("page", "1");
+
     for (const filterName in FILTERS) {
       const value = filters[filterName as keyof typeof filters];
       if (value) params.set(filterName, value);

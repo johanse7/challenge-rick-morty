@@ -1,2 +1,6 @@
-import { getCharacters, getCharactersById } from "./get-characters";
-export { getCharacters, getCharactersById };
+import {
+  getCharacters,
+  getCharactersById,
+  getTotalPages,
+} from "./get-characters";
+export { getCharacters, getCharactersById, getTotalPages };

@@ -1,6 +1,6 @@
 import {
   BackLink,
-  DetailCharacter,
+  DetailCharacterContent,
   DetailSkeleton,
   FilterContent,
 } from "@/components";
@@ -28,7 +28,7 @@ export default function DetailPage(
       </div>
       <Suspense fallback={<DetailSkeleton />}>
         <div className="pl-5 md:pl-14 md:pt-7 w-full">
-          <DetailCharacter id={id} />
+          <DetailCharacterContent id={id} />
         </div>
       </Suspense>
     </>

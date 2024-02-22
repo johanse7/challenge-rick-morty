@@ -1,6 +1,10 @@
 import { FilterParamsType } from "@/lib/types/params";
 import { getClient } from "../clientgql";
-import { GET_CHARACTERS, GET_CHARACTERS_BY_ID } from "../queries";
+import {
+  GET_CHARACTERS,
+  GET_CHARACTERS_BY_ID,
+  GET_TOTAL_PAGES,
+} from "../queries";
 import { CharacterQuery, CharactersQuery } from "../types/character";
 
 export const getCharacters = async (
@@ -31,5 +35,20 @@ export const getCharactersById = async (
     return data;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const getTotalPages = async (
+  filter: FilterParamsType
+): Promise<number> => {
+  try {
+    const { data } = await getClient().query<CharactersQuery>({
+      query: GET_TOTAL_PAGES(filter),
+    });
+
+    return data?.characters?.info?.pages ?? 0;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 };
