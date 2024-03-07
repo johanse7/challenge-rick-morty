@@ -1,6 +1,7 @@
 import { LABEL_FILTER, LABEL_FILTER_PLURAL } from "@/lib/constants";
 import { useGetSearchParams } from "@/lib/hooks";
 import { GET_CHARACTERS, GET_TOTAL_PAGES } from "@/lib/queries";
+import { CharactersQuery } from '@/lib/types/character';
 import { FilterParamsType } from "@/lib/types/params";
 import { getCountFilterParams } from "@/lib/utils";
 import { useQuery } from "@apollo/client";
