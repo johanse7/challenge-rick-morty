@@ -1,36 +1,29 @@
-import {
-  BackLink,
-  DetailCharacterContent,
-  DetailSkeleton,
-  FilterContent,
-} from "@/components";
+import { BackLink, DetailCharacterContent, DetailSkeleton } from "@/components";
 import {
   DetailParams,
   FilterParamsType,
   SearchParamsType,
 } from "@/lib/types/params";
+import { notFound } from "next/navigation";
 
 import { Suspense } from "react";
 
 export default function DetailPage(
   props: SearchParamsType<FilterParamsType, DetailParams>
 ) {
-  const { params, searchParams } = props;
+  const { params } = props;
 
-  if (!params?.id) return null;
+  if (!params?.id) return notFound();
 
   const { id } = params;
   return (
-    <>
-      <BackLink />
-      <div className="hidden md:block">
-        <FilterContent {...searchParams} />
-      </div>
-      <Suspense fallback={<DetailSkeleton />}>
-        <div className="pl-5 md:pl-14 md:pt-7 w-full">
-          <DetailCharacterContent id={id} />
-        </div>
+    <div className="pl-5 md:pl-14 pt-7 w-full">
+      <Suspense>
+        <BackLink />
       </Suspense>
-    </>
+      <Suspense fallback={<DetailSkeleton />}>
+        <DetailCharacterContent id={id} />
+      </Suspense>
+    </div>
   );
 }

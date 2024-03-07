@@ -40,9 +40,7 @@ export const CardSkeleton = () => {
 
 export const DetailSkeleton = () => {
   return (
-    <div
-      className={`${shimmer} flex h-full md:pl-14 flex-col md:pt-8 px-4 gap-7 w-full`}
-    >
+    <div className={`${shimmer} flex h-full  flex-col  w-full`}>
       <div className="flex flex-col gap-4">
         <div className="h-[75px] w-[75px] rounded-full bg-gray-200" />
         <div className="h-5 w-[30%]  rounded-md bg-gray-200" />

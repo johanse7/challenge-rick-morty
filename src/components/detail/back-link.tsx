@@ -10,11 +10,12 @@ export const BackLink = () => {
 
   const queryString = useMemo(() => {
     const params = new URLSearchParams(searchParams);
+
     return params.toString();
   }, [searchParams]);
 
   return (
-    <Link href={`/?${queryString}`} className="block md:hidden pl-4 pt-4">
+    <Link href={`/?${queryString}`} className="block md:hidden">
       <ArrowleftIcon />
     </Link>
   );
